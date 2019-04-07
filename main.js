@@ -70,12 +70,12 @@ function numMenor(array) {
   console.log(least);
 }
 //Ex 4
-var arrayDos = [62, 69, 32, 3, 25, 95, 356, 1958, 26536, 574364374, 35636, 4623632, 46, 462444, 3002];
+var arrayDos = [62, 69, 32, 3, 25, 95, 356, 1958, 265, 36, 574, 364374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
 var u = 0;
 var most = 0;
 
 function numMayor(arrayDos) {
-  while (l < arrayDos.length) {
+  while (u < arrayDos.length) {
     if (arrayDos[u] > arrayDos[u + 1] && most < arrayDos[u]) {
       most = arrayDos[u];
       u++;
@@ -94,12 +94,28 @@ function exCinco(array, index) {
 }
 //Ex 6
 var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
-
+var numRepetidos = [];
+function repetedNumbers(array){
+  for (var j=0; j<array.length; j++){
+    var i = 0;
+    while (i < array.length && i !== j){
+      if(array[i] == array[j]){
+        numRepetidos.push(array[i]);
+        i++;
+      } else {
+        i++;
+      }
+    }
+  }
+  console.log(numRepetidos);
+}
 //Ex 7
+var myColor;
 myColor = ["Red", "Green", "White", "Black"];
 var colours = [];
-
-function colour(myColor, colours) {
-  return myColor;
+function arrayToString(myColors) {
+  for (var i = 0; i<myColor.length; i++){
+    colours.push(myColor[i]);
+  }
+  console.log(colours);
 }
-console.log(colours);
