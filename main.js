@@ -119,3 +119,12 @@ function arrayToString(myColors) {
   }
   console.log(colours);
 }
+
+//JavaScript Strings
+// Ex 1
+var num = 32443;
+function reverseNumber(num){
+  var reversedNumber;
+  num.toString() = reversedNumber;
+  console.log(reversedNumber);
+}
