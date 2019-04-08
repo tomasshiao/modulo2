@@ -95,11 +95,12 @@ function exCinco(array, index) {
 //Ex 6
 var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
 var numRepetidos = [];
-function repetedNumbers(array){
-  for (var j=0; j<array.length; j++){
+
+function repetedNumbers(array) {
+  for (var j = 0; j < array.length; j++) {
     var i = 0;
-    while (i < array.length && i !== j){
-      if(array[i] == array[j]){
+    while (i < array.length && i !== j) {
+      if (array[i] == array[j]) {
         numRepetidos.push(array[i]);
         i++;
       } else {
@@ -113,9 +114,56 @@ function repetedNumbers(array){
 var myColor;
 myColor = ["Red", "Green", "White", "Black"];
 var colours = [];
+
 function arrayToString(myColors) {
-  for (var i = 0; i<myColor.length; i++){
+  /*for (var i = 0; i < myColor.length; i++) {
     colours.push(myColor[i]);
   }
-  console.log(colours);
+  colours.toString();*/
+  arrayToString.toString();
+  console.log();
+}
+
+//JavaSript Strings
+//Ex 1
+var num = 32443;
+
+function reverseNum(x) {
+  var newNum = num.toString().split("").reverse().join("");
+  console.log(newNum);
+}
+//Ex 2
+var str = "webmaster";
+
+function alphabeticalOrder(str) {
+  var ordered = str.split("").sort().join("");
+  console.log(ordered);
+}
+//Ex 3
+var str = "prince of persia";
+
+function capitalise(str) {
+  var separated = str.split(" ");
+  for (var i = 0; i < separated.length; i++) {
+    separated[i] = separated[i].charAt(0).toUpperCase() + separated[i].substring(1);
+  }
+  var uppercase = separated.join(" ");
+  console.log(uppercase);
+}
+/*split convierte a array al string.
+el for indica que cada palabra -ocupa una posicion cada una- el caracter en la pos 0 e mayuscula y el resto -.substring(1)- en minuscula
+join(" ") los une con un espacio*/
+
+//Ex 4
+var text = "Web Development Tutorial";
+
+function longestWord(text) {
+  var textArray = text.split(" ");
+  var longestWord = 0;
+  for (var i = 0; i < textArray.length; i++) {
+    if (textArray[i].length > longestWord) {
+      longestWord = textArray.length;
+    }
+  }
+console.log(longestWord);
 }
