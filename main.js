@@ -167,12 +167,3 @@ function longestWord(text) {
   }
 console.log(longestWord);
 }
-
-//JavaScript Strings
-// Ex 1
-var num = 32443;
-function reverseNumber(num){
-  var reversedNumber;
-  num.toString() = reversedNumber;
-  console.log(reversedNumber);
-}
