@@ -118,7 +118,7 @@ function reverseNum(num) {
   console.log(newNum);
 }
 //Ex 2
-var palabra = "webmaster";
+var palabra = "webmastñer";
 function alphabeticalOrder(palabra) {
   var ordered = palabra.split("").sort().join("");
   console.log(ordered);
