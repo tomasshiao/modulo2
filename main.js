@@ -111,18 +111,13 @@ function repetedNumbers(array) {
   console.log(numRepetidos);
 }
 //Ex 7
-var myColor;
-myColor = ["Red", "Green", "White", "Black"];
-var colours = [];
-
-function arrayToString(myColors) {
-  /*for (var i = 0; i < myColor.length; i++) {
-    colours.push(myColor[i]);
-  }
-  colours.toString();*/
-  arrayToString.toString();
-  console.log();
+//Ejercicio 7 - Array to String
+var myColor = ["\"Red\"", "\"Green\"", "\"White\"", "\"Black\""];
+function arrayToString (Array){
+    var arrString = Array.join(", ");
+    console.log(arrString);
 }
+
 
 //JavaSript Strings
 //Ex 1
