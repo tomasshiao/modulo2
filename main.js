@@ -54,36 +54,26 @@ function exDos() {
 }
 
 // Ex 3
-var array = [24, 26, 26, 63, 41, 74, 88, 64, 21, 10, 1, 86, 3, 51];
-var l = 0;
-var least = 999;
 
+var array = [24, 26, 26, 63, 41, 74, 64, 21, 10, 1, 86, 3, 51, 0];
 function numMenor(array) {
-  while (l < array.length) {
-    if (array[l] < array[l + 1] && least > array[l]) {
-      least = array[l];
-      l++;
-    } else {
-      l++;
+  var smallest = 99999;
+  for(var i=0; i<array.length; i++){
+    if(smallest>array[i]){
+      smallest = array[i];
     }
+    console.log(smallest);
   }
-  console.log(least);
-}
 //Ex 4
 var arrayDos = [62, 69, 32, 3, 25, 95, 356, 1958, 265, 36, 574, 364374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
-var u = 0;
-var most = 0;
-
 function numMayor(arrayDos) {
-  while (u < arrayDos.length) {
-    if (arrayDos[u] > arrayDos[u + 1] && most < arrayDos[u]) {
-      most = arrayDos[u];
-      u++;
-    } else {
-      u++;
+  var biggest = -99999;
+  for(var i=0; i<array.length; i++){
+    if(biggest<array[i]){
+      biggest = array[i];
     }
-  }
-  console.log(most);
+    console.log(biggest);
+}
 }
 //Ex 5
 var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
@@ -111,7 +101,6 @@ function repetedNumbers(array) {
   console.log(numRepetidos);
 }
 //Ex 7
-//Ejercicio 7 - Array to String
 var myColor = ["\"Red\"", "\"Green\"", "\"White\"", "\"Black\""];
 function arrayToString (Array){
     var arrString = Array.join(", ");
@@ -123,15 +112,14 @@ function arrayToString (Array){
 //Ex 1
 var num = 32443;
 
-function reverseNum(x) {
+function reverseNum(num) {
   var newNum = num.toString().split("").reverse().join("");
   console.log(newNum);
 }
 //Ex 2
-var str = "webmaster";
-
-function alphabeticalOrder(str) {
-  var ordered = str.split("").sort().join("");
+var palabra = "webmaster";
+function alphabeticalOrder(palabra) {
+  var ordered = palabra.split("").sort().join("");
   console.log(ordered);
 }
 //Ex 3
@@ -153,13 +141,14 @@ join(" ") los une con un espacio*/
 var text = "Web Development Tutorial";
 
 function longestWord(text) {
-  var textArray = text.split(" ");
-  var longestWord = 0;
-  for (var i = 0; i < textArray.length; i++) {
-    if (textArray[i].length > longestWord) {
-      longestWord = textArray.length;
+    var str = text.split(" ");
+    var longest = 0;
+    var word;
+    for (var i = 0; i < str.length; i++) {
+        if (longest < str[i].length) {
+            longest = str[i].length;
+            word = str[i];
+        }
     }
-    return longestWord;
-  }
-console.log(longestWord);
+    console.log(word);
 }
