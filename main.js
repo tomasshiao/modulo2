@@ -62,8 +62,9 @@ function numMenor(array) {
     if(smallest>array[i]){
       smallest = array[i];
     }
-    console.log(smallest);
   }
+  console.log(smallest);
+}
 //Ex 4
 var arrayDos = [62, 69, 32, 3, 25, 95, 356, 1958, 265, 36, 574, 364374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
 function numMayor(arrayDos) {
@@ -72,8 +73,8 @@ function numMayor(arrayDos) {
     if(biggest<array[i]){
       biggest = array[i];
     }
-    console.log(biggest);
 }
+  console.log(biggest);
 }
 //Ex 5
 var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
