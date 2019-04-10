@@ -164,6 +164,7 @@ function longestWord(text) {
     if (textArray[i].length > longestWord) {
       longestWord = textArray.length;
     }
+    return longestWord;
   }
 console.log(longestWord);
 }
