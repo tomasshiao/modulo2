@@ -27,7 +27,7 @@ if (ageDiff > 0) {
 
 //JavaScript Arrays
 //Ex 1
-function exUno() {
+function nombres() {
   var names = ['Silvana Darlik', 'Matías Guerrero', 'Hernán', 'Miriam', 'Agustina Oficialdegui', 'Alejandro Belo', 'Alejandro Raffo', 'Amad Saed', 'Cristian Cahe', 'Regina Molares', 'Nahuel Correa', 'Elizabeth Sainz', 'Federico Viola', 'Tomás Shiao', 'Genaro Di Martino', 'Iara Baya', 'Inés Ehulech', 'José Luis González', 'Joseph Flores', 'Leonardo López', 'Lighuen Gerónimo', 'Luz Marina Pereira', 'Marco A. López', 'Mateo Barreiros'];
   names.sort();
   console.log(names[0]);
@@ -37,7 +37,7 @@ function exUno() {
   }
 }
 //Ex 2
-function exDos() {
+function edaes() {
   var ages = [43, 32, 27, 23, 24, 36, 31, 25, 19, 48, 44, 43, 25, 48, 38];
   var k = 0;
   while (k < ages.length) {
@@ -66,7 +66,7 @@ function numMenor(array) {
   console.log(smallest);
 }
 //Ex 4
-var arrayDos = [62, 69, 32, 3, 25, 95, 356, 1958, 265, 36, 574, 364374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
+var arrayDos = [62, 69, 32, 3, 25, 95, 356, 19,58, 265, 36, 574, 364, 374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
 function numMayor(arrayDos) {
   var biggest = -99999;
   for(var i=0; i<array.length; i++){
@@ -80,7 +80,7 @@ function numMayor(arrayDos) {
 var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
 var index = 1;
 
-function exCinco(array, index) {
+function printNumber(array, index) {
   console.log(array[index]);
 }
 //Ex 6
@@ -100,9 +100,9 @@ function repetedNumbers(array) {
   console.log(numRepetidos);
 }
 //Ex 7
-var myColor = ["\"Red\"", "\"Green\"", "\"White\"", "\"Black\""];
+var myColor = ["Red", "Green", "White", "Black"];
 function arrayToString (Array){
-    var arrString = Array.join(", ");
+    var arrString = Array.join(" \", \"");
     console.log(arrString);
 }
 
