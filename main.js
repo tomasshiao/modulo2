@@ -88,9 +88,9 @@ var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 2
 var numRepetidos = [];
 
 function repetedNumbers(array) {
-  for (var j = 0; j < array.length; j++) {
-    var i = 0;
-    while (i < array.length && i !== j) {
+  var i=0;
+  for (var j = i+1; j < array.length; j++) {
+    while (i < array.length) {
       if (array[i] == array[j]) {
         numRepetidos.push(array[i]);
       }
