@@ -37,7 +37,7 @@ function nombres() {
   }
 }
 //Ex 2
-function edaes() {
+function edades() {
   var ages = [43, 32, 27, 23, 24, 36, 31, 25, 19, 48, 44, 43, 25, 48, 38];
   var k = 0;
   while (k < ages.length) {
