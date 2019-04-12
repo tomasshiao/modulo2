@@ -93,10 +93,8 @@ function repetedNumbers(array) {
     while (i < array.length && i !== j) {
       if (array[i] == array[j]) {
         numRepetidos.push(array[i]);
-        i++;
-      } else {
-        i++;
       }
+      j++;
     }
   }
   console.log(numRepetidos);
