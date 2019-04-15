@@ -55,25 +55,35 @@ function edades() {
 
 // Ex 3
 
-var array = [24, 26, 26, 63, 41, 74, 64, 21, 10, 1, 86, 3, 51, 0, -3];
-function numMenor(array) {
+var arrayUno = [24, 26, 26, 63, 41, 74, 64, 21, 10, 1, 86, 3, 51];
+function numMenor(arrayUno) {
+  var i=0;
+  var j=1;
   var smallest = 99999;
-  for(var i=0; i<array.length; i++){
-    if(smallest>array[i]){
-      smallest = array[i];
+  for(var i=0; i<(arrayUno.length)-1; i++){
+    if(arrayUno[j]>arrayUno[i] && smallest>arrayUno[i]){
+      smallest = arrayUno[i];
+    } else if(arrayUno[j]<smallest){
+      smallest=arrayUno[j];
     }
+    j++;
   }
   console.log(smallest);
 }
 //Ex 4
 var arrayDos = [62, 69, 32, 3, 25, 95, 356, 19,58, 265, 36, 574, 364, 374, 356, 36, 46, 236, 32, 46, 462, 444, 3002];
 function numMayor(arrayDos) {
+  var i=0;
+  var j=1;
   var biggest = -99999;
-  for(var i=0; i<array.length; i++){
-    if(biggest<array[i]){
-      biggest = array[i];
+  for(var i=0; i<(arrayDos.length)-1; i++){
+    if(arrayDos[j]<arrayDos[i] && biggest<arrayDos[i]){
+      biggest = arrayDos[i];
+    } else if(arrayDos[j]>biggest){
+      biggest=arrayDos[j];
     }
-}
+    j++;
+  }
   console.log(biggest);
 }
 //Ex 5
@@ -84,19 +94,31 @@ function printNumber(array, index) {
   console.log(array[index]);
 }
 //Ex 6
-var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100];
+var array = [3, 6, 67, 6, 23, 11, 100, 8, 93, 0, 17, 24, 7, 1, 33, 45, 28, 33, 23, 12, 99, 100, 100];
 var numRepetidos = [];
 
 function repetedNumbers(array) {
-  var i=0;
-  for (var j = i+1; j < array.length; j++) {
-    while (i < array.length) {
-      if (array[i] == array[j]) {
-        numRepetidos.push(array[i]);
-      }
-      i++;
-    }
-  }
+  var i=1;
+  var j=0;
+  while(j<array.length){
+   if(array[j] !== array[i] && i<array.length){
+     i++;
+   }else if(array[j] == array[i]){
+     numRepetidos.push(array[j]);
+     j++;
+     i=j+1;
+   } else {
+     j++;
+     i=j+1;
+   }
+ }
+ for (var k = 0; k<numRepetidos.length; k++){
+   var l=1;
+   if(numRepetidos[l]==numRepetidos[k]){
+     numRepetidos.pop(numRepetidos[k]);
+   }
+   l=k+1;
+ }
   console.log(numRepetidos);
 }
 //Ex 7
