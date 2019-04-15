@@ -55,7 +55,7 @@ function edades() {
 
 // Ex 3
 
-var array = [24, 26, 26, 63, 41, 74, 64, 21, 10, 1, 86, 3, 51, 0];
+var array = [24, 26, 26, 63, 41, 74, 64, 21, 10, 1, 86, 3, 51, 0, -3];
 function numMenor(array) {
   var smallest = 99999;
   for(var i=0; i<array.length; i++){
@@ -94,7 +94,7 @@ function repetedNumbers(array) {
       if (array[i] == array[j]) {
         numRepetidos.push(array[i]);
       }
-      j++;
+      i++;
     }
   }
   console.log(numRepetidos);
@@ -102,8 +102,8 @@ function repetedNumbers(array) {
 //Ex 7
 var myColor = ["Red", "Green", "White", "Black"];
 function arrayToString (Array){
-    var arrString = Array.join(" \", \"");
-    console.log(arrString);
+    var arrString = Array.join("\",\"");
+    console.log("\"" + arrString + "\"");
 }
 
 
