@@ -10,15 +10,16 @@ var senators = data.results[0].members.map(function(u) {
   } else {
     fullName = u.last_name + ",  " + u.first_name + " " + u.middle_name;
   }
-  var cell = tableRow.insertCell();
-  function newCells(string) {
-    cell.appendChild(document.createTextNode(string));
-  }
-  newCells(fullName + " ");
-  newCells(u.party + " ");
-  newCells(u.state + " ");
-  newCells(u.seniority + " ");
-  newCells(u.votes_with_party_pct + "%");
+  //
+  // var cell = tableRow.insertCell();
+  // function newCells(string) {
+  //   cell.appendChild(document.createTextNode(string));
+  // }
+  tableRow.insertCell(0).appendChild(document.createTextNode(fullName + " "));
+  tableRow.insertCell(1).appendChild(document.createTextNode(u.party + " "));
+  tableRow.insertCell(2).appendChild(document.createTextNode(u.state + " "));
+  tableRow.insertCell(3).appendChild(document.createTextNode(u.seniority + " "));
+  tableRow.insertCell(4).appendChild(document.createTextNode(u.votes_with_party_pct + "%"));
 });
 //
 //
