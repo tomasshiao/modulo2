@@ -1,9 +1,10 @@
 var hallo = JSON.stringify(data,null,2);
 var tableHead = document.createElement("thead");
 var tableBody = document.createElement("tbody");
+tableBody.setAttribute('id', 'tabla');
 var members = data.results[0].members;
+document.getElementById("tablas").innerHTML += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>';
 function crearTabla(members){
-document.getElementById("tablas").innerHTML = (tableHead += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>');
 var fullName;
 var senators = members.forEach(function(u) {
   var tableRow = tableBody.insertRow();
@@ -24,14 +25,14 @@ var senators = members.forEach(function(u) {
 
 document.getElementById("tablas").appendChild(tableBody);
 }
-crearTabla(members);
+
 function filterMembers(members){
       var checkBoxes = document.querySelectorAll('input[name=party-filter]:checked')
       console.log(checkBoxes);
       checkedBoxes = Array.from(checkBoxes)
       console.log(checkedBoxes);
       checkedBoxes = checkedBoxes.map(function (element) {
-          return element.value
+          return element.value;
       })
       console.log(checkedBoxes);
       var filtrados = [];
@@ -40,5 +41,8 @@ function filterMembers(members){
               return members;
           }
       })
+      console.log(filtrados);
       return filtrados;
+      document.getElementById("tablas").innerHTML = filtrados;
   }
+crearTabla(members);
