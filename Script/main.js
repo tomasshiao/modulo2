@@ -25,7 +25,7 @@ var senators = members.forEach(function(u) {
 
 document.getElementById("tablas").appendChild(tableBody);
 }
-
+crearTabla(members);
 function filterMembers(members){
       var checkBoxes = document.querySelectorAll('input[name=party-filter]:checked')
       console.log(checkBoxes);
@@ -39,10 +39,23 @@ function filterMembers(members){
       filtrados = members.filter(function (members) {
           if (checkedBoxes.includes(members.party)) {
               return members;
-          }
-      })
+      }});
       console.log(filtrados);
       return filtrados;
       document.getElementById("tablas").innerHTML = filtrados;
   }
-crearTabla(members);
+
+var filtered = filterMembers(members);
+
+function filterState(filtered){
+  var estado = document.querySelectorAll("#state-filter").value;
+  if(estado ==="All"){
+    return filtered;
+  } else {
+    filtered = filtered.filter(function (members) {
+      if(estado.includes(members.state)){
+        return filtered;
+      }
+    });
+  }
+}
