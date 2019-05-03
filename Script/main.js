@@ -5,9 +5,11 @@ tableBody.setAttribute('id', 'tabla');
 var members = data.results[0].members;
 document.getElementById("tablas").innerHTML += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>';
 function crearTabla(members){
+members = filterMembers(members);
 var fullName;
 var senators = members.forEach(function(u) {
   var tableRow = tableBody.insertRow();
+  tableRow.className = "rowBody";
   if (u.middle_name === null) {
     fullName = u.last_name + ", " + u.first_name;
   } else {
@@ -24,6 +26,11 @@ var senators = members.forEach(function(u) {
 });
 
 document.getElementById("tablas").appendChild(tableBody);
+}
+
+function clearTable(){
+  $(".rowBody").remove();
+  crearTabla(filterMembers(members));
 }
 crearTabla(members);
 function filterMembers(members){
@@ -42,20 +49,15 @@ function filterMembers(members){
       }});
       console.log(filtrados);
       return filtrados;
-      document.getElementById("tablas").innerHTML = filtrados;
-  }
+      }
 
 var filtered = filterMembers(members);
-
+console.log(filtered);
 function filterState(filtered){
   var estado = document.querySelectorAll("#state-filter").value;
-  if(estado ==="All"){
-    return filtered;
-  } else {
-    filtered = filtered.filter(function (members) {
-      if(estado.includes(members.state)){
-        return filtered;
-      }
-    });
+  filtered.filter(function(filtered){
+    if(estado === filtered.state){
+      return filtered;
+    }
+  })
   }
-}
