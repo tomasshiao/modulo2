@@ -53,8 +53,10 @@ function filterMembers(members){
 
 var filtered = filterMembers(members);
 console.log(filtered);
+
 function filterState(filtered){
   var estado = document.querySelectorAll("#state-filter").value;
+  console.log(estado);
   filtered.filter(function(filtered){
     if(estado === filtered.state){
       return filtered;
