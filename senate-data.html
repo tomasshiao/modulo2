@@ -48,8 +48,8 @@
     <p class="float-right">
       Filter by State:
       <label>
-        <select name="state-filter" onchange="filterState(filtered)">
-          <option value="All">All</option>
+        <select id="state-filter" name="state-selector" onchange="clearTable()">
+          <option value="todos">All</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
