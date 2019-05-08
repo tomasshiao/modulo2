@@ -57,7 +57,7 @@ function filterMembers(members) {
 
 function filterState() {
   var state = document.querySelector('#state-filter').value;
-  console.log(state);
+  // console.log(state);
   return state;
 }
 
