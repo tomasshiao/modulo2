@@ -1,6 +1,6 @@
 var members = data.results[0].members;
 var statistics =
-[{
+{
   "number_of_democrats": 0,
   "number_of_republicans": 0,
   "number_of_independent": 0,
@@ -12,9 +12,9 @@ var statistics =
   "most_engaged": [],
   "least_loyal": [],
   "most_loyal":[]
-}]
+}
 console.log(statistics.number_of_democrats);
-function listas(members){
+function crearListas(members){
   statistics.total = members.length;
     members.filter(function(members){
       if (members.party === "D"){
