@@ -29,5 +29,5 @@ function crearListas(members){
       }
     })
 }
-listas(members);
+crearListas(members);
 console.log(statistics.number_of_democrats);
