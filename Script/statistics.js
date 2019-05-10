@@ -1,4 +1,3 @@
-var hallo = JSON.stringify(data, null, 2);
 var members = data.results[0].members;
 var statistics =
 [{
@@ -14,16 +13,19 @@ var statistics =
   "least_loyal": [],
   "most_loyal":[]
 }]
-
+console.log(statistics.number_of_democrats);
 function listas(members){
   statistics.total = members.length;
     members.filter(function(members){
       if (members.party === "D"){
-        return statistics.number_of_democrats+1;
+        statistics.number_of_democrats+1;
+        return members;
       }else if(members.party === "R"){
-        return statistics.number_of_republicans+1;
+        statistics.number_of_republicans+1;
+        return members;
       } else if(members.party === "I") {
-        return statistics.number_of_independent+1;
+        statistics.number_of_independent+1;
+        return members;
       }
     })
 }
