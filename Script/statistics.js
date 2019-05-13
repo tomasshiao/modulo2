@@ -7,7 +7,7 @@ var statistics =
   "total": 0,
   "democrats_avg_vwp": 0,
   "republicans_avg_vwp": 0,
-  "inependent_avg_vwp": 0,
+  "independent_avg_vwp": 0,
   "least_engaged": [],
   "most_engaged": [],
   "least_loyal": [],
@@ -32,4 +32,7 @@ function crearListas(members){
     statistics.number_of_independent = ind.length;
 }
 crearListas(members);
-console.log(dem);
+
+function valoresPromedio(){
+  dem.map(m=>m.votes_with_party_pct).reduce(num1+num2,0);
+}
