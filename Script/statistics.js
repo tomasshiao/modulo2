@@ -13,18 +13,23 @@ var statistics =
   "least_loyal": [],
   "most_loyal":[]
 }
-console.log(statistics.number_of_democrats);
+let rep = [];
+let dem = [];
+let ind = [];
 function crearListas(members){
   statistics.total = members.length;
-    for(var i = 0; i>members.length; i++){
+    for(var i = 0; i<members.length; i++){
       if (members[i].party === "D"){
-        statistics.number_of_democrats++;
-      }else if(members.party === "R"){
-        statistics.number_of_republicans++;
-      } else if(members.party === "I") {
-        statistics.number_of_independent++;
+        dem.push(members[i]);
+      }else if(members[i].party === "R"){
+        rep.push(members[i]);
+      } else if(members[i].party === "I") {
+        ind.push(members[i]);
       }
     }
+    statistics.number_of_democrats = dem.length;
+    statistics.number_of_republicans = rep.length;
+    statistics.number_of_independent = ind.length;
 }
 crearListas(members);
-console.log(statistics.number_of_democrats);
+console.log(dem);
