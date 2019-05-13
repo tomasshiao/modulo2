@@ -16,18 +16,15 @@ var statistics =
 console.log(statistics.number_of_democrats);
 function crearListas(members){
   statistics.total = members.length;
-    members.filter(function(members){
-      if (members.party === "D"){
-        statistics.number_of_democrats+1;
-        return members;
+    for(var i = 0; i>members.length; i++){
+      if (members[i].party === "D"){
+        statistics.number_of_democrats++;
       }else if(members.party === "R"){
-        statistics.number_of_republicans+1;
-        return members;
+        statistics.number_of_republicans++;
       } else if(members.party === "I") {
-        statistics.number_of_independent+1;
-        return members;
+        statistics.number_of_independent++;
       }
-    })
+    }
 }
 crearListas(members);
 console.log(statistics.number_of_democrats);
