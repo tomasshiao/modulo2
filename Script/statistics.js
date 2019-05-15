@@ -43,7 +43,35 @@ crearListas(members);
 
 var tableBody = document.createElement("tbody");
 tableBody.setAttribute("id", "at-a-glance");
-function crearTablaAtAGlance(statistics){
+var party_data = [{
+  "party": "Democrats",
+  "representatives":statistics.number_of_democrats,
+  "avg_vwp": statistics.democrats_avg_vwp
+},
+{
+  "party": "Republicans",
+  "representatives": statistics.number_of_republicans,
+  "avg_vwp": statistics.republicans_avg_vwp
+},
+{
+  "party": "Independent",
+  "representatives": statistics.number_of_independent,
+  "avg_vwp": statistics.independent_avg_vwp
+}]
+var tableBody = document.createElement("tbody");
 
+function crearTablaAtAGlance(party_data){
+  var parties = party_data.forEach(function(u){
+    var tableRow = tableBody.insertRow();
+    tableRow.className = "rowBody";
+    tableRow.insertCell(0).appendChild(document.createTextNode(u.party));
+    tableRow.insertCell(1).appendChild(document.createTextNode(u.representatives));
+    tableRow.insertCell(2).appendChild(document.createTextNode(u.avg_vwp));
+    document.getElementById("glance").appendChild(tableBody);
+  })
 }
 crearTablaAtAGlance(statistics);
+
+function mostEngaged(array){
+
+}
