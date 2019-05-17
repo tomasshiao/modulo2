@@ -23,15 +23,15 @@ function crearListas(members){
       if (members[i].party === "D"){
         dem.push(members[i]);
         statistics.number_of_democrats = dem.length;
-        statistics.democrats_avg_vwp += members[i].votes_with_party_pct;
+        statistics.democrats_avg_vwp += ((100-members[i].missed_votes_pct)*(members[i].votes_with_party_pct/100));
       }else if(members[i].party === "R"){
         rep.push(members[i]);
         statistics.number_of_republicans = rep.length;
-        statistics.republicans_avg_vwp += members[i].votes_with_party_pct;
+        statistics.republicans_avg_vwp += ((100-members[i].missed_votes_pct)*(members[i].votes_with_party_pct/100));
       } else if(members[i].party === "I") {
         ind.push(members[i]);
         statistics.number_of_independent = ind.length;
-        statistics.independent_avg_vwp += members[i].votes_with_party_pct;
+        statistics.independent_avg_vwp += ((100-members[i].missed_votes_pct)*(members[i].votes_with_party_pct/100));
       }
     }
     statistics.democrats_avg_vwp = Number(parseFloat(statistics.democrats_avg_vwp/dem.length).toPrecision(4));
@@ -60,18 +60,50 @@ var party_data = [{
 }]
 var tableBody = document.createElement("tbody");
 
-function crearTablaAtAGlance(party_data){
-  var parties = party_data.forEach(function(u){
-    var tableRow = tableBody.insertRow();
-    tableRow.className = "rowBody";
-    tableRow.insertCell(0).appendChild(document.createTextNode(u.party));
-    tableRow.insertCell(1).appendChild(document.createTextNode(u.representatives));
-    tableRow.insertCell(2).appendChild(document.createTextNode(u.avg_vwp));
-    document.getElementById("glance").appendChild(tableBody);
+// function crearTablaAtAGlance(party_data){
+//   var parties = party_data.forEach(function(u){
+//     var tableRow = tableBody.insertRow();
+//     tableRow.className = "rowBody";
+//     tableRow.insertCell(0).appendChild(document.createTextNode(u.party));
+//     tableRow.insertCell(1).appendChild(document.createTextNode(u.representatives));
+//     tableRow.insertCell(2).appendChild(document.createTextNode(u.avg_vwp));
+//     document.getElementById("glance").appendChild(tableBody);
+//   })
+// }
+// crearTablaAtAGlance(statistics);
+
+// function showEngagement(array){
+//   let attendance = []; //most engaged
+//    for(var i=0; i<array.length; i++){
+//      attendance.push(array[i].missed_votes_pct);
+//    }
+//    attendance.sort((a,b)=> a-b);
+//    var diezPorciento = Math.round(attendance.length * 0.1);
+//   for(var i=0; i<diezPorciento;i++){
+//     (statistics.most_engaged).push(array[i]);
+//   }
+//   console.log(statistics.most_engaged);
+//   var i = diezPorciento +1;
+//   while((i<attendance.length) && (statistics.most_engaged[11].missed_votes_pct === attendance[i].missed_votes_pct)){
+//     (statistics.most_engaged).push(attendance[i]);
+//     i++;
+//   }
+//   console.log(statistics.most_engaged);
+//   // var reversedAttendance = attendance.reverse();
+//   // console.log(attendance);
+//   // console.log(reversedAttendance);
+// }
+// showEngagement(members);
+function showEngagement(key, order){
+  var ordenados = members.sort(function(a,b){
+    return order ? a.missed_votes_pct - b.missed_votes_pct : b.missed_votes_pct - a.missed_votes_pct
   })
+    return ordenados;
 }
-crearTablaAtAGlance(statistics);
-
-function mostEngaged(array){
-
-}
+var most_engaged = showEngagement("missed_votes_pct", true);
+//console.log(statistics.most_engaged.map(x => x.missed_votes_pct));
+//statistics.most_engaged = (statistics.most_engaged).reverse();
+//console.log(statistics.most_engaged);
+var least_engaged = showEngagement("missed_votes_pct", false);
+//console.log(statistics.least_engaged);
+//console.log(statistics.least_engaged.map(x => x.missed_votes_pct));
