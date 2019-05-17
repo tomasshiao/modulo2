@@ -41,11 +41,6 @@ function crearListas(members){
 }
 crearListas(members);
 
-<<<<<<< HEAD
-function valoresPromedio(dem){
-  for(var i=0; i+1<dem.length; i++){
-  dem.map(m=>m.votes_with_party_pct).reduce(dem[i]+dem[i+1],0);}
-=======
 var tableBody = document.createElement("tbody");
 tableBody.setAttribute("id", "at-a-glance");
 var party_data = [{
@@ -79,8 +74,4 @@ crearTablaAtAGlance(statistics);
 
 function mostEngaged(array){
 
->>>>>>> 0f651f6324cb1276ea3da7a558a428041d417299
 }
-valoresPromedio(dem);
-valoresPromedio(rep);
-valoresPromedio(ind);
