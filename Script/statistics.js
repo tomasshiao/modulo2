@@ -33,6 +33,10 @@ function crearListas(members){
 }
 crearListas(members);
 
-function valoresPromedio(){
-  dem.map(m=>m.votes_with_party_pct).reduce(num1+num2,0);
+function valoresPromedio(dem){
+  for(var i=0; i+1<dem.length; i++){
+  dem.map(m=>m.votes_with_party_pct).reduce(dem[i]+dem[i+1],0);}
 }
+valoresPromedio(dem);
+valoresPromedio(rep);
+valoresPromedio(ind);
