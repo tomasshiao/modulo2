@@ -1,11 +1,3 @@
-$(function(){
-  var data;
-  fetch("https://projects.propublica.org/api-docs/congress-api/members/").then(function(data){
-
-  }).catch(function (){
-
-  })
-})
 var members = data.results[0].members;
 var statistics = {
   "number_of_democrats": 0,

@@ -1,9 +1,13 @@
-var hallo = JSON.stringify(data, null, 2);
+function initialize(){
+  var hallo = JSON.stringify(data, null, 2);
+  var members = data.results[0].members;
+  document.getElementById("tablas").innerHTML += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>';
+  crearTabla(members);
+}
+
 var tableHead = document.createElement("thead");
 var tableBody = document.createElement("tbody");
 tableBody.setAttribute('id', 'tabla');
-var members = data.results[0].members;
-document.getElementById("tablas").innerHTML += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>';
 
 function crearTabla(members) {
   members = filterMembers(members);
@@ -65,4 +69,3 @@ function clearTable() {
   $(".rowBody").remove();
   crearTabla(filterMembers(members));
 }
-crearTabla(members);
