@@ -9,6 +9,6 @@ fetch('https://api.propublica.org/congress/v1/113/senate/members.json',{
   })
   .then(function(myJson) {
     data = myJson;
-    initialize();
+    initialise();
     console.log(JSON.stringify(myJson));
   });

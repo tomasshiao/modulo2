@@ -1,6 +1,6 @@
 var data;
 
-fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
+fetch('https://api.propublica.org/congress/v1/113/senate/members.json',{
   method:"get",
   headers: {"X-API-key" : "d7q0qwNNDcgz8dsRKsx2RKJCEBgHy88iAPNM04cE"}
 })
@@ -9,9 +9,9 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
   })
   .then(function(myJson) {
     data = myJson;
-    initialize();
-    console.log(JSON.stringify(myJson));
+    JSON.stringify(data, null, 2));
+    initialise();
   })
   .catch(function(error){
-    console.log(error);
+    console.log(error)
   });
