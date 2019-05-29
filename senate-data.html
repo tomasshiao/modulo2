@@ -121,7 +121,18 @@
     </p>
   </div>
   <table  class="table" id="tablas">
-
+    <thead>
+      <tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>
+    </thead>
+    <tbody id="tables">
+      <tr v-for="members in data">
+      <td>{{members.fullName}}</td>
+      <td>{{members.party}}</td>
+      <td>{{members.state}}</td>
+      <td>{{members.seniority}}</td>
+      <td>{{members.votes_with_party_pct}}</td>
+    </tr>
+    </tbody>
   </table>
   <footer class="card-footer text-muted text-center">
     <p class="text-center">ⓒ2016 TGIF | All Rights Reserved</p>

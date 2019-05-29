@@ -1,10 +1,8 @@
-function initialise(){
-  // var members = data.results[0].members;
-  crearTabla(members);
-  return members;
-}
-document.getElementById("tablas").innerHTML += '<tr><th>Full Name</th><th>Party</th><th>State</th><th>Seniority</th><th>Percentage of votes with Party</th></tr>';
-var tableHead = document.createElement("thead");
+// function initialise(){
+//   // var members = data.results[0].members;
+//   crearTabla(members);
+//   return members;
+// }
 var tableBody = document.createElement("tbody");
 tableBody.setAttribute('id', 'tabla');
 function crearTabla(members) {
@@ -19,9 +17,13 @@ function crearTabla(members) {
       fullName = u.last_name + ",  " + u.first_name + " " + u.middle_name;
     }
 
-    fullName = '<a href="' + u.url + '">' + fullName + '</a>';
+    var full_name = '<a href="' + u.url + '">' + fullName + '</a>';
+    u = {
+      ...u,
+      "full_name": fullName
+    };
     var celda = tableRow.insertCell(0);
-    celda.innerHTML = fullName;
+    celda.innerHTML = full_name;
     tableRow.insertCell(1).appendChild(document.createTextNode(u.party));
     tableRow.insertCell(2).appendChild(document.createTextNode(u.state));
     tableRow.insertCell(3).appendChild(document.createTextNode(u.seniority));
@@ -30,7 +32,7 @@ function crearTabla(members) {
 
   document.getElementById("tablas").appendChild(tableBody);
 }
-var members = initialise();
+
 function filterMembers(members) {
   var checkBoxes = document.querySelectorAll('input[name=party-filter]:checked')
   checkedBoxes = Array.from(checkBoxes)
@@ -67,7 +69,16 @@ function usingVue(members){
   var members = new Vue({
     el: "#newTable",
     data: {
-      filtered: members;
+      filtered: members,
     }
   })
 }
+
+
+
+// -------------
+
+var app = new Vue({
+  el:"#tables",
+  data: {data:members}
+});
