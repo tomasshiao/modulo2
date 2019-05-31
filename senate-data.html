@@ -54,14 +54,14 @@
       several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials,
       military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
     <p class="float-left">
-      <label class="party">Filter by party: <input type="checkbox" name="party-filter" value="R" onchange="clearTable()" checked> Republican </label>
-      <label class="party"><input type="checkbox" name="party-filter" value="D" onchange="clearTable()" checked> Democrat </label>
-      <label class="party"><input type="checkbox" name="party-filter" value="I" onchange="clearTable()" checked> Independent</label>
+      <label class="party">Filter by party: <input type="checkbox" name="party-filter" value="R" onchange="filterMembers()" checked> Republican </label>
+      <label class="party"><input type="checkbox" name="party-filter" value="D" onchange="filterMembers()" checked> Democrat </label>
+      <label class="party"><input type="checkbox" name="party-filter" value="I" onchange="filterMembers()" checked> Independent</label>
     </p>
     <p class="float-right">
       Filter by State:
       <label>
-        <select id="state-filter" name="state-selector" onchange="clearTable()">
+        <select id="state-filter" name="state-selector" onchange="filterMembers()">
           <option value="todos">All</option>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
@@ -129,7 +129,7 @@
       </tr>
     </thead>
     <tbody id="tables">
-      <tr v-for="members in data">
+      <tr v-for="members in filteredMembers">
         <td><a v-bind:href=members.url>{{members.full_name}}</a></td>
         <td>{{members.party}}</td>
         <td>{{members.state}}</td>
