@@ -32,6 +32,13 @@
 //
 //   document.getElementById("tablas").appendChild(tableBody);
 // }
+//
+// function createTable(members){
+//   var app = new Vue({
+//     el:"#tables",
+//     data: {data: members}
+//   });
+// }
 
 function filterMembers(members) {
   var checkBoxes = document.querySelectorAll('input[name=party-filter]:checked')
@@ -64,35 +71,4 @@ function filterState() {
 function clearTable() {
   $(".rowBody").remove();
   crearTabla(filterMembers(members));
-}
-function usingVue(members){
-  var members = new Vue({
-    el: "#newTable",
-    data: {
-      filtered: members,
-    }
-  })
-}
-
-
-
-// -------------
-function createTables(members){
-  var fullName;
-  var senators = members.forEach(function(u) {
-    if (u.middle_name === null) {
-      fullName = u.last_name + ", " + u.first_name;
-    } else {
-      fullName = u.last_name + ",  " + u.first_name + " " + u.middle_name;
-    u = {
-      ...u,
-      "full_name": fullName
-    };
-    }
-    console.log(fullName);
-  })
-var app = new Vue({
-  el:"#tables",
-  data: {data:members}
-});
 }
