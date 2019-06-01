@@ -1,8 +1,8 @@
-var app = new Vue({
-  el:"#tables",
-  data: {
-    filteredMembers: []}
-});
+// var app = new Vue({
+//   el:"#tables",
+//   data: {
+//     filteredMembers: []}
+// });
 
 var data;
 var members;

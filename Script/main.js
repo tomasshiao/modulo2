@@ -16,6 +16,12 @@ function initialise(){
   };
   }
 }
+var app = new Vue({
+  el:"#tables",
+  data: {
+    filteredMembers: []}
+});
+
 function createTable(members){
   return app;
 }
@@ -44,8 +50,3 @@ function filterState() {
   var state = document.querySelector('#state-filter').value;
   return state;
 }
-// 
-// function clearTable() {
-//   $(".rowBody").remove();
-//   crearTabla(filterMembers(members));
-// }
