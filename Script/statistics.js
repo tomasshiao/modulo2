@@ -39,7 +39,7 @@ function crearListas(members) {
   statistics.independent_avg_vwp = Number(parseFloat(statistics.independent_avg_vwp / ind.length).toPrecision(4));
   statistics.total_avg = Number(parseFloat((statistics.democrats_avg_vwp + statistics.republicans_avg_vwp + statistics.independent_avg_vwp) / 3).toPrecision(5));
 }
-crearListas(members);
+// crearListas(members);
 
 function showEngagement(order) {
   var ordenados = [];
@@ -54,8 +54,8 @@ function showEngagement(order) {
   }
   return ordenados;
 }
-statistics.most_engaged = showEngagement(true);
-statistics.least_engaged = showEngagement(false);
+// statistics.most_engaged = showEngagement(true);
+// statistics.least_engaged = showEngagement(false);
 
 function showLoyalty(key, order) {
   var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
@@ -77,8 +77,8 @@ function showLoyalty(key, order) {
   }
   return ordenados;
 }
-statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
-statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
+// statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
+// statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
 
 var parties = [{
     party: "D",
@@ -101,7 +101,7 @@ var parties = [{
     pct_vwp: statistics.total_avg
   }
 ]
-console.log(statistics);
+// console.log(statistics);
 // function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
 //   let tableBody1;
 //   let tableBody2;

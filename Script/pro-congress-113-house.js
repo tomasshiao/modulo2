@@ -2,6 +2,7 @@ var data;
 var members;
 var fullName;
 var senators;
+
 fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
   method: "get",
   headers: {"X-API-key" : "d7q0qwNNDcgz8dsRKsx2RKJCEBgHy88iAPNM04cE"}
@@ -14,7 +15,13 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
     members = data.results[0].members,
     app.filteredMembers = members,
     initialise(),
-    createTable(members);
+    console.log(members),
+    createTable(members),
+    crearListas(members),
+    statistics.most_engaged = showEngagement(true),
+    statistics.least_engaged = showEngagement(false),
+    statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false),
+    statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true)
 })
   .catch(function(error){
      console.log("error")
