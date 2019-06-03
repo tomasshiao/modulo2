@@ -109,7 +109,6 @@ var parties = [{
 //   let tableBody4;
 //   let tableBody5;
 //   return tablaUno ? (
-//     document.getElementById("glance").innerHTML += "<thead><tr><th>Party</th><th>Number of Representatives</th><th>%Voted with party</th></tr></thead>",
 //     tableBody1 = document.createElement("tbody"),
 //     parties.forEach(function(x) {
 //       var rowT1 = tableBody1.insertRow();
@@ -120,7 +119,6 @@ var parties = [{
 //     })
 //   ) : (tablaDos ? (
 //     tablaTres ? (
-//       document.getElementById("mostEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
 //       tableBody2 = document.createElement("tbody"),
 //       (statistics.most_engaged).forEach(function(x) {
 //         var rowT2 = tableBody2.insertRow();
@@ -138,7 +136,6 @@ var parties = [{
 //         document.getElementById("mostEngaged").appendChild(tableBody2);
 //       })
 //     ) : (
-//       document.getElementById("leastEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
 //       tableBody3 = document.createElement("tbody"),
 //       (statistics.least_engaged).forEach(function(x) {
 //         var rowT3 = tableBody3.insertRow();
@@ -158,7 +155,6 @@ var parties = [{
 //     )
 //   ) : (
 //     tablaCuatro ? (
-//       document.getElementById("mostLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
 //       tableBody4 = document.createElement("tbody"),
 //       (statistics.most_loyal).forEach(function(x) {
 //         var rowT4 = tableBody4.insertRow();
@@ -176,7 +172,6 @@ var parties = [{
 //         document.getElementById("mostLoyal").appendChild(tableBody4);
 //       })
 //     ) : (
-//       document.getElementById("leastLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
 //       tableBody5 = document.createElement("tbody"),
 //       (statistics.least_loyal).forEach(function(x) {
 //         var rowT5 = tableBody5.insertRow();
