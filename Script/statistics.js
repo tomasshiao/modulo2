@@ -1,4 +1,4 @@
-var members = data.results[0].members;
+//var members = data.results[0].members;
 var statistics = {
   "number_of_democrats": 0,
   "number_of_republicans": 0,
@@ -101,99 +101,99 @@ var parties = [{
     pct_vwp: statistics.total_avg
   }
 ]
-
-function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
-  let tableBody1;
-  let tableBody2;
-  let tableBody3;
-  let tableBody4;
-  let tableBody5;
-  return tablaUno ? (
-    document.getElementById("glance").innerHTML += "<thead><tr><th>Party</th><th>Number of Representatives</th><th>%Voted with party</th></tr></thead>",
-    tableBody1 = document.createElement("tbody"),
-    parties.forEach(function(x) {
-      var rowT1 = tableBody1.insertRow();
-      rowT1.insertCell(0).appendChild(document.createTextNode(x.party));
-      rowT1.insertCell(1).appendChild(document.createTextNode(x.number_of_representatives));
-      rowT1.insertCell(2).appendChild(document.createTextNode(x.pct_vwp + "%"));
-      document.getElementById("glance").appendChild(tableBody1);
-    })
-  ) : (tablaDos ? (
-    tablaTres ? (
-      document.getElementById("mostEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
-      tableBody2 = document.createElement("tbody"),
-      (statistics.most_engaged).forEach(function(x) {
-        var rowT2 = tableBody2.insertRow();
-        var cell = rowT2.insertCell(0);
-        var fullName;
-        if (x.middle_name === null) {
-          fullName = x.last_name + ", " + x.first_name;
-        } else {
-          fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
-        }
-        fullName = '<a href="' + x.url + '">' + fullName + '</a>';
-        cell.innerHTML = fullName;
-        rowT2.insertCell(1).appendChild(document.createTextNode(x.missed_votes));
-        rowT2.insertCell(2).appendChild(document.createTextNode(x.missed_votes_pct + "%"));
-        document.getElementById("mostEngaged").appendChild(tableBody2);
-      })
-    ) : (
-      document.getElementById("leastEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
-      tableBody3 = document.createElement("tbody"),
-      (statistics.least_engaged).forEach(function(x) {
-        var rowT3 = tableBody3.insertRow();
-        var cell = rowT3.insertCell(0);
-        var fullName;
-        if (x.middle_name === null) {
-          fullName = x.last_name + ", " + x.first_name;
-        } else {
-          fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
-        }
-        fullName = '<a href="' + x.url + '">' + fullName + '</a>';
-        cell.innerHTML = fullName;
-        rowT3.insertCell(1).appendChild(document.createTextNode(x.missed_votes));
-        rowT3.insertCell(2).appendChild(document.createTextNode(x.missed_votes_pct + "%"));
-        document.getElementById("leastEngaged").appendChild(tableBody3);
-      })
-    )
-  ) : (
-    tablaCuatro ? (
-      document.getElementById("mostLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
-      tableBody4 = document.createElement("tbody"),
-      (statistics.most_loyal).forEach(function(x) {
-        var rowT4 = tableBody4.insertRow();
-        var cell = rowT4.insertCell(0);
-        var fullName;
-        if (x.middle_name === null) {
-          fullName = x.last_name + ", " + x.first_name;
-        } else {
-          fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
-        }
-        fullName = '<a href="' + x.url + '">' + fullName + '</a>';
-        cell.innerHTML = fullName;
-        rowT4.insertCell(1).appendChild(document.createTextNode(Math.round((x.total_votes) * ((x.votes_with_party_pct) / 100))));
-        rowT4.insertCell(2).appendChild(document.createTextNode(x.effective_votes_with_party_pct + "%"));
-        document.getElementById("mostLoyal").appendChild(tableBody4);
-      })
-    ) : (
-      document.getElementById("leastLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
-      tableBody5 = document.createElement("tbody"),
-      (statistics.least_loyal).forEach(function(x) {
-        var rowT5 = tableBody5.insertRow();
-        var cell = rowT5.insertCell(0);
-        var fullName;
-        if (x.middle_name === null) {
-          fullName = x.last_name + ", " + x.first_name;
-        } else {
-          fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
-        }
-        fullName = '<a href="' + x.url + '">' + fullName + '</a>';
-        cell.innerHTML = fullName;
-        rowT5.insertCell(1).appendChild(document.createTextNode(Math.round((x.total_votes) * ((x.votes_with_party_pct) / 100))));
-        rowT5.insertCell(2).appendChild(document.createTextNode(x.effective_votes_with_party_pct + "%"));
-        document.getElementById("leastLoyal").appendChild(tableBody5);
-      })
-    )
-  ))
-}
-crearTablas(true, false, false, false);
+console.log(statistics);
+// function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
+//   let tableBody1;
+//   let tableBody2;
+//   let tableBody3;
+//   let tableBody4;
+//   let tableBody5;
+//   return tablaUno ? (
+//     document.getElementById("glance").innerHTML += "<thead><tr><th>Party</th><th>Number of Representatives</th><th>%Voted with party</th></tr></thead>",
+//     tableBody1 = document.createElement("tbody"),
+//     parties.forEach(function(x) {
+//       var rowT1 = tableBody1.insertRow();
+//       rowT1.insertCell(0).appendChild(document.createTextNode(x.party));
+//       rowT1.insertCell(1).appendChild(document.createTextNode(x.number_of_representatives));
+//       rowT1.insertCell(2).appendChild(document.createTextNode(x.pct_vwp + "%"));
+//       document.getElementById("glance").appendChild(tableBody1);
+//     })
+//   ) : (tablaDos ? (
+//     tablaTres ? (
+//       document.getElementById("mostEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
+//       tableBody2 = document.createElement("tbody"),
+//       (statistics.most_engaged).forEach(function(x) {
+//         var rowT2 = tableBody2.insertRow();
+//         var cell = rowT2.insertCell(0);
+//         var fullName;
+//         if (x.middle_name === null) {
+//           fullName = x.last_name + ", " + x.first_name;
+//         } else {
+//           fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
+//         }
+//         fullName = '<a href="' + x.url + '">' + fullName + '</a>';
+//         cell.innerHTML = fullName;
+//         rowT2.insertCell(1).appendChild(document.createTextNode(x.missed_votes));
+//         rowT2.insertCell(2).appendChild(document.createTextNode(x.missed_votes_pct + "%"));
+//         document.getElementById("mostEngaged").appendChild(tableBody2);
+//       })
+//     ) : (
+//       document.getElementById("leastEngaged").innerHTML += "<thead><tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr></thead>",
+//       tableBody3 = document.createElement("tbody"),
+//       (statistics.least_engaged).forEach(function(x) {
+//         var rowT3 = tableBody3.insertRow();
+//         var cell = rowT3.insertCell(0);
+//         var fullName;
+//         if (x.middle_name === null) {
+//           fullName = x.last_name + ", " + x.first_name;
+//         } else {
+//           fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
+//         }
+//         fullName = '<a href="' + x.url + '">' + fullName + '</a>';
+//         cell.innerHTML = fullName;
+//         rowT3.insertCell(1).appendChild(document.createTextNode(x.missed_votes));
+//         rowT3.insertCell(2).appendChild(document.createTextNode(x.missed_votes_pct + "%"));
+//         document.getElementById("leastEngaged").appendChild(tableBody3);
+//       })
+//     )
+//   ) : (
+//     tablaCuatro ? (
+//       document.getElementById("mostLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
+//       tableBody4 = document.createElement("tbody"),
+//       (statistics.most_loyal).forEach(function(x) {
+//         var rowT4 = tableBody4.insertRow();
+//         var cell = rowT4.insertCell(0);
+//         var fullName;
+//         if (x.middle_name === null) {
+//           fullName = x.last_name + ", " + x.first_name;
+//         } else {
+//           fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
+//         }
+//         fullName = '<a href="' + x.url + '">' + fullName + '</a>';
+//         cell.innerHTML = fullName;
+//         rowT4.insertCell(1).appendChild(document.createTextNode(Math.round((x.total_votes) * ((x.votes_with_party_pct) / 100))));
+//         rowT4.insertCell(2).appendChild(document.createTextNode(x.effective_votes_with_party_pct + "%"));
+//         document.getElementById("mostLoyal").appendChild(tableBody4);
+//       })
+//     ) : (
+//       document.getElementById("leastLoyal").innerHTML += "<thead><tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr></thead>",
+//       tableBody5 = document.createElement("tbody"),
+//       (statistics.least_loyal).forEach(function(x) {
+//         var rowT5 = tableBody5.insertRow();
+//         var cell = rowT5.insertCell(0);
+//         var fullName;
+//         if (x.middle_name === null) {
+//           fullName = x.last_name + ", " + x.first_name;
+//         } else {
+//           fullName = x.last_name + ",  " + x.first_name + " " + x.middle_name;
+//         }
+//         fullName = '<a href="' + x.url + '">' + fullName + '</a>';
+//         cell.innerHTML = fullName;
+//         rowT5.insertCell(1).appendChild(document.createTextNode(Math.round((x.total_votes) * ((x.votes_with_party_pct) / 100))));
+//         rowT5.insertCell(2).appendChild(document.createTextNode(x.effective_votes_with_party_pct + "%"));
+//         document.getElementById("leastLoyal").appendChild(tableBody5);
+//       })
+//     )
+//   ))
+// }
+// crearTablas(true, false, false, false);

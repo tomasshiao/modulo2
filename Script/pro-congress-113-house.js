@@ -1,9 +1,3 @@
-// var app = new Vue({
-//   el:"#tables",
-//   data: {
-//     filteredMembers: []}
-// });
-
 var data;
 var members;
 var fullName;
@@ -25,3 +19,21 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
   .catch(function(error){
      console.log("error")
   })
+  function initialise(){
+    members = data.results[0].members,
+    senators = members.forEach(function(u) {
+    if (u.middle_name === null) {
+      fullName = u.last_name + ", " + u.first_name;
+    } else {
+      fullName = u.last_name + ",  " + u.first_name + " " + u.middle_name;
+    }
+    u.full_name = fullName;
+    })
+    var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
+    for (var i = 0; i < pair.length; i++) {
+    members[i] = {
+    ...members[i],
+    "effective_votes_with_party_pct": pair[i]
+    };
+    }
+  }
