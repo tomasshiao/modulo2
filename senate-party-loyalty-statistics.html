@@ -78,18 +78,28 @@
         <div class="row" id="partyLoyalty">
           <div class="col">
             <h2>Least Loyal (Bottom 10% of Party)</h2>
-            <table class="table loyalty" id="leastLoyal">
+            <table class="table loyalty">
               <thead>
                 <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
               </thead>
+              <tbody v-for="" id="leastLoyal">
+                <tr><a v-bind:href=statistics.least_loyal.url>{{statistics.least_loyal}}</a></tr>
+                <tr>{{Math.round((statistics.least_loyal.total_votes) * ((statistics.least_loyal.votes_with_party_pct) / 100}}</tr>
+                <tr>{{statistics.least_loyal.effective_votes_with_party_pct}}%</tr>
+              </tbody>
             </table>
           </div>
           <div class="col">
             <h2>Most Loyal (Top 10% of Party)</h2>
-            <table class="table loyalty" id="mostLoyal">
+            <table class="table loyalty">
               <thead>
                 <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
               </thead>
+              <tbody v-for="" id="mostLoyal">
+                <tr><a v-bind:href=statistics.most_loyal.url>{{statistics.most_loyal}}</a></tr>
+                <tr>{{Math.round((statistics.most_loyal.total_votes) * ((statistics.most_loyal.votes_with_party_pct) / 100}}</tr>
+                <tr>{{statistics.most_loyal.effective_votes_with_party_pct}}%</tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -97,7 +107,7 @@
       <footer class="card-footer text-muted text-center">
         <p class="text-center">ⓒ2016 TGIF | All Rights Reserved</p>
       </footer>
-      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
       <!-- <script src="script/main.js"></script> -->
       <script src="script/pro-congress-113-senate.js"></script>
       <script src="Script/statistics.js"></script>

@@ -56,10 +56,17 @@
           </div>
           <div class="col">
             <h2 class="text-right">House at a glance</h2>
-            <table class="table" id="glance">
+            <table class="table">
               <thead>
                 <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
               </thead>
+              <tbody id="glance">
+                <tr v-for="stats in statistics">
+                  <td>{{parties.party}}</td>
+                  <td>{{parties.number_of_representatives}}</td>
+                  <td>{{parties.pct_vwp}}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -67,15 +74,28 @@
         <div class="row" id="partyLoyalty">
           <div class="col">
             <h2>Least Loyal (Bottom 10% of Party)</h2>
-            <table class="table loyalty" id="leastLoyal">
+            <table class="table loyalty">
               <thead>
                 <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
               </thead>
+              <tbody v-for="" id="leastLoyal">
+                <tr><a v-bind:href=statistics.least_loyal.url>{{statistics.least_loyal}}</a></tr>
+                <tr>{{Math.round((statistics.least_loyal.total_votes) * ((statistics.least_loyal.votes_with_party_pct) / 100}}</tr>
+                <tr>{{statistics.least_loyal.effective_votes_with_party_pct}}%</tr>
+              </tbody>
             </table>
           </div>
           <div class="col">
             <h2>Most Loyal (Top 10% of Party)</h2>
-            <table class="table loyalty" id="mostLoyal">
+            <table class="table loyalty">
+              <thead>
+                <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
+              </thead>
+              <tbody v-for="" id="mostLoyal">
+                <tr><a v-bind:href=statistics.most_loyal.url>{{statistics.most_loyal}}</a></tr>
+                <tr>{{Math.round((statistics.most_loyal.total_votes) * ((statistics.most_loyal.votes_with_party_pct) / 100}}</tr>
+                <tr>{{statistics.most_loyal.effective_votes_with_party_pct}}%</tr>
+              </tbody>
             </table>
           </div>
         </div>

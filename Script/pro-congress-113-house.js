@@ -11,17 +11,12 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
     return response.json();
   })
   .then(function(myJson) {
-    data = myJson,
-    members = data.results[0].members,
-    app.filteredMembers = members,
-    initialise(),
-    console.log(members),
-    createTable(members),
-    crearListas(members),
-    statistics.most_engaged = showEngagement(true),
-    statistics.least_engaged = showEngagement(false),
-    statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false),
-    statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true)
+    data = myJson;
+    members = data.results[0].members;
+    app.filteredMembers = members;
+    console.log(app.filteredMembers);
+    initialise();
+    createTable(members);
 })
   .catch(function(error){
      console.log("error")

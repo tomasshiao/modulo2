@@ -1,4 +1,9 @@
-//var members = data.results[0].members;
+var app = new Vue({
+  el:"#glance",
+  data: {
+    filteredMembers: []}
+});
+
 var statistics = {
   "number_of_democrats": 0,
   "number_of_republicans": 0,
@@ -101,6 +106,17 @@ var parties = [{
     pct_vwp: statistics.total_avg
   }
 ]
+function createTable(members){
+  crearListas(members);
+  statistics.most_engaged = showEngagement(true);
+  statistics.least_engaged = showEngagement(false);
+  statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
+  statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
+  console.log(statistics);
+}
+
+var atGlance
+
 // console.log(statistics);
 // function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
 //   let tableBody1;
