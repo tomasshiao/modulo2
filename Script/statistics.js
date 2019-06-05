@@ -112,13 +112,12 @@ function createTable(members){
   statistics.least_engaged = showEngagement(false);
   statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
   statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
-  console.log(statistics);
 }
 
 var atGlance = new Vue({
   el: "#glance",
   data:{
-    statistics: parties
+    statistics: {}
   }
 })
 

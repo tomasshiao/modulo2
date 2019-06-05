@@ -14,9 +14,10 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
     data = myJson;
     members = data.results[0].members;
     app.filteredMembers = members;
-    console.log(app.filteredMembers);
     initialise();
     createTable(members);
+    atGlance.statistics = parties;
+    console.log(parties);
 })
   .catch(function(error){
      console.log("error")
