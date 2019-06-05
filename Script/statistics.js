@@ -115,7 +115,12 @@ function createTable(members){
   console.log(statistics);
 }
 
-var atGlance
+var atGlance = new Vue({
+  el: "#glance",
+  data:{
+    statistics: parties
+  }
+})
 
 // console.log(statistics);
 // function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
