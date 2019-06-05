@@ -35,5 +35,13 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
     ...members[i],
     "effective_votes_with_party_pct": pair[i]
     };
+    var partyVotes = members.map(x => Math.round((members.total_votes) * ((members.votes_with_party_pct) / 100)));
+    console.log(partyVotes)
+    for (var i = 0; i < partyVotes.length; i++) {
+    members[i] = {
+    ...members[i],
+    "party_votes": partyVotes[i]
+    };
     }
   }
+}
