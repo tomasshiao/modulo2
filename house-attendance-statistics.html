@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
@@ -50,7 +52,7 @@
     </div>
   </header>
   <!--Table container-->
-  <div>
+  <div id="app">
     <div class="row">
       <div class="col col-lg-8">
         <h2>Attendance</h2>
@@ -67,10 +69,20 @@
             <tr><th>Party</th><th>Number of Representatives</th><th>%Voted with party</th></tr>
           </thead>
           <tbody id="glance">
-            <tr v-for="parties in statistics">
-              <td>{{parties.party}}</td>
-              <td>{{parties.number_of_representatives}}</td>
-              <td>{{parties.pct_vwp}}</td>
+            <tr>
+              <td>Democrats</td>
+              <td>{{statistics.number_of_democrats}}</td>
+              <td>{{statistics.democrats_avg_vwp}}</td>
+            </tr>
+            <tr>
+              <td>Republicans</td>
+              <td>{{statistics.number_of_republicans}}</td>
+              <td>{{statistics.republicans_avg_vwp}}</td>
+            </tr>
+            <tr>
+              <td>Independents</td>
+              <td>{{statistics.number_of_independent}}</td>
+              <td>{{statistics.independent_avg_vwp}}</td>
             </tr>
           </tbody>
         </table>
@@ -84,10 +96,10 @@
           <thead>
             <tr><th>Name</th><th>Number of Missed Votes</th><th>%Missed</th></tr>
           </thead>
-          <tbody id="leastEngaged" v-for="">
-            <tr><a v-bind:href=statistics.least_engaged.url>{{statistics.least_engaged}}</a></tr>
-            <tr>{{statistics.least_engagedmissed_votes}}</tr>
-            <tr>{{statistics.least_engaged.missed_votes_pct}}%</tr>
+          <tbody id="leastEngaged" v-for="value in statistics.least_loyal">
+            <tr><a v-bind:href=statistics.least_engaged.url>{{value.full_name}}</a></tr>
+            <tr>{{value.missed_votes}}</tr>
+            <tr>{{value.missed_votes_pct}}%</tr>
           </tbody>
         </table>
       </div>
@@ -109,7 +121,6 @@
   <footer class="card-footer text-muted text-center">
     <p class="text-center">ⓒ2016 TGIF | All Rights Reserved</p>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="script/pro-congress-113-house.js"></script>
   <!-- <script src="script/main.js"></script> -->
   <script src="script/statistics.js"></script>

@@ -48,7 +48,7 @@
             <div>
             </div>
         </header>
-        <div>
+        <div id="app">
           <div class="row">
             <div class="col col-lg-8">
             <h2>Party Loyalty</h2>
@@ -61,10 +61,20 @@
                 <tr><th>Name</th><th>Number of Party Votes</th><th>%Party Votes</th></tr>
               </thead>
               <tbody id="glance">
-                <tr v-for="stats in statistics">
-                  <td>{{parties.party}}</td>
-                  <td>{{parties.number_of_representatives}}</td>
-                  <td>{{parties.pct_vwp}}</td>
+                <tr>
+                  <td>Democrats</td>
+                  <td>{{x.number_of_representatives}}</td>
+                  <td>{{x.pct_vwp}}</td>
+                </tr>
+                <tr>
+                  <td>Republicans</td>
+                  <td>{{x.number_of_representatives}}</td>
+                  <td>{{x.pct_vwp}}</td>
+                </tr>
+                <tr>
+                  <td>Independents</td>
+                  <td>{{x.number_of_representatives}}</td>
+                  <td>{{x.pct_vwp}}</td>
                 </tr>
               </tbody>
             </table>

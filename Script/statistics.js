@@ -1,50 +1,54 @@
 var app = new Vue({
-  el:"#glance",
+  el:"#app",
   data: {
-    filteredMembers: []}
+    filteredMembers: [],
+    statistics: {
+      "number_of_democrats": 0,
+      "number_of_republicans": 0,
+      "number_of_independent": 0,
+      "total": 0,
+      "democrats_avg_vwp": 0,
+      "republicans_avg_vwp": 0,
+      "independent_avg_vwp": 0,
+      "total_avg": 0,
+      "least_engaged": [],
+      "most_engaged": [],
+      "least_loyal": [],
+      "most_loyal": []
+    }
+  }
 });
 
-var statistics = {
-  "number_of_democrats": 0,
-  "number_of_republicans": 0,
-  "number_of_independent": 0,
-  "total": 0,
-  "democrats_avg_vwp": 0,
-  "republicans_avg_vwp": 0,
-  "independent_avg_vwp": 0,
-  "total_avg": 0,
-  "least_engaged": [],
-  "most_engaged": [],
-  "least_loyal": [],
-  "most_loyal": []
-}
 let rep = [];
 let dem = [];
 let ind = [];
 
 function crearListas(members) {
-  statistics.total = members.length;
+  app.statistics.total = members.length;
   for (var i = 0; i < members.length; i++) {
     if (members[i].party === "D") {
       dem.push(members[i]);
-      statistics.number_of_democrats = dem.length;
-      statistics.democrats_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100));
+      app.statistics.number_of_democrats = dem.length;
+      app.statistics.democrats_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100));
     } else if (members[i].party === "R") {
       rep.push(members[i]);
-      statistics.number_of_republicans = rep.length;
-      statistics.republicans_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100));
+      app.statistics.number_of_republicans = rep.length;
+      app.statistics.republicans_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100));
     } else if (members[i].party === "I") {
       ind.push(members[i]);
-      statistics.number_of_independent = ind.length;
-      statistics.independent_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100));
+      app.statistics.number_of_independent = ind.length;
+      if(ind.length !== 0){
+      app.statistics.independent_avg_vwp += ((100 - members[i].missed_votes_pct) * (members[i].votes_with_party_pct / 100)) || 0;
+    } else {
+      app.statistics.independent_avg_vwp += 0;
+    }
     }
   }
-  statistics.democrats_avg_vwp = Number(parseFloat(statistics.democrats_avg_vwp / dem.length).toPrecision(4));
-  statistics.republicans_avg_vwp = Number(parseFloat(statistics.republicans_avg_vwp / rep.length).toPrecision(4));
-  statistics.independent_avg_vwp = Number(parseFloat(statistics.independent_avg_vwp / ind.length).toPrecision(4));
-  statistics.total_avg = Number(parseFloat((statistics.democrats_avg_vwp + statistics.republicans_avg_vwp + statistics.independent_avg_vwp) / 3).toPrecision(5));
+  app.statistics.democrats_avg_vwp = Number(parseFloat(app.statistics.democrats_avg_vwp / dem.length).toPrecision(4));
+  app.statistics.republicans_avg_vwp = Number(parseFloat(app.statistics.republicans_avg_vwp / rep.length).toPrecision(4));
+  app.statistics.independent_avg_vwp = Number(parseFloat(app.statistics.independent_avg_vwp / ind.length ||0).toPrecision(4));
+  app.statistics.total_avg = Number(parseFloat((app.statistics.democrats_avg_vwp + app.statistics.republicans_avg_vwp + app.statistics.independent_avg_vwp) / 3).toPrecision(5));
 }
-// crearListas(members);
 
 function showEngagement(order) {
   var ordenados = [];
@@ -59,8 +63,6 @@ function showEngagement(order) {
   }
   return ordenados;
 }
-// statistics.most_engaged = showEngagement(true);
-// statistics.least_engaged = showEngagement(false);
 
 function showLoyalty(key, order) {
   var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
@@ -82,44 +84,37 @@ function showLoyalty(key, order) {
   }
   return ordenados;
 }
-// statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
-// statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
 
-var parties = [{
-    party: "D",
-    number_of_representatives: statistics.number_of_democrats,
-    pct_vwp: statistics.democrats_avg_vwp
-  },
-  {
-    party: "R",
-    number_of_representatives: statistics.number_of_republicans,
-    pct_vwp: statistics.republicans_avg_vwp
-  },
-  {
-    party: "I",
-    number_of_representatives: statistics.number_of_independent,
-    pct_vwp: statistics.independent_avg_vwp
-  },
-  {
-    party: "Total",
-    number_of_representatives: statistics.number_of_democrats + statistics.number_of_republicans + statistics.number_of_independent,
-    pct_vwp: statistics.total_avg
-  }
-]
+// var parties = [{
+//     party: "D",
+//     number_of_representatives: app.statistics.number_of_democrats,
+//     pct_vwp: app.statistics.democrats_avg_vwp
+//   },
+//   {
+//     party: "R",
+//     number_of_representatives: app.statistics.number_of_republicans,
+//     pct_vwp: app.statistics.republicans_avg_vwp
+//   },
+//   {
+//     party: "I",
+//     number_of_representatives: app.statistics.number_of_independent,
+//     pct_vwp: app.statistics.independent_avg_vwp
+//   },
+//   {
+//     party: "Total",
+//     number_of_representatives: app.statistics.number_of_democrats + app.statistics.number_of_republicans + app.statistics.number_of_independent,
+//     pct_vwp: app.statistics.total_avg
+//   }
+// ]
 function createTable(members){
   crearListas(members);
-  statistics.most_engaged = showEngagement(true);
-  statistics.least_engaged = showEngagement(false);
-  statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
-  statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
+  app.statistics.most_engaged = showEngagement(true);
+  app.statistics.least_engaged = showEngagement(false);
+  app.statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
+  app.statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
+  console.log(app.statistics);
 }
 
-var atGlance = new Vue({
-  el: "#glance",
-  data:{
-    statistics: {}
-  }
-})
 
 // console.log(statistics);
 // function crearTablas(tablaUno, tablaDos, tablaTres, tablaCuatro) {
