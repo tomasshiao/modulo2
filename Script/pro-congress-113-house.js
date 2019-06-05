@@ -2,7 +2,6 @@ var data;
 var members;
 var fullName;
 var senators;
-var value;
 fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
   method: "get",
   headers: {"X-API-key" : "d7q0qwNNDcgz8dsRKsx2RKJCEBgHy88iAPNM04cE"}
