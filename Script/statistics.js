@@ -65,13 +65,13 @@ function showEngagement(order) {
 }
 
 function showLoyalty(key, order) {
-  var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
-  for (var i = 0; i < pair.length; i++) {
-    members[i] = {
-      ...members[i],
-      "effective_votes_with_party_pct": pair[i]
-    };
-  }
+  // var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
+  // for (var i = 0; i < pair.length; i++) {
+  //   members[i] = {
+  //     ...members[i],
+  //     "effective_votes_with_party_pct": pair[i]
+  //   };
+  // }
   var ordenados = [];
   var sortedMembers = members.sort(function(a, b) {
     return order ? a[key] - b[key] : b[key] - a[key];

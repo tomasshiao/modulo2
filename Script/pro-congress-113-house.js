@@ -30,18 +30,12 @@ fetch('https://api.propublica.org/congress/v1/113/house/members.json',{
     u.full_name = fullName;
     })
     var pair = members.map(x => Number(parseFloat((100 - x.missed_votes_pct) * (x.votes_with_party_pct / 100)).toPrecision(4)));
-    for (var i = 0; i < pair.length; i++) {
-    members[i] = {
-    ...members[i],
-    "effective_votes_with_party_pct": pair[i]
-    };
-    var partyVotes = members.map(x => Math.round((members.total_votes) * ((members.votes_with_party_pct) / 100)));
-    console.log(partyVotes)
+    var partyVotes = members.map(x => Math.round((x.total_votes) * ((x.votes_with_party_pct) / 100)));
     for (var i = 0; i < partyVotes.length; i++) {
     members[i] = {
     ...members[i],
+    "effective_votes_with_party_pct": pair[i],
     "party_votes": partyVotes[i]
     };
     }
   }
-}
