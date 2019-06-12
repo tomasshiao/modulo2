@@ -50,10 +50,10 @@ function crearListas(members) {
   app.statistics.total_avg = Number(parseFloat((app.statistics.democrats_avg_vwp + app.statistics.republicans_avg_vwp + app.statistics.independent_avg_vwp) / 3).toPrecision(5));
 }
 
-function showStatistics(key, order) {
+function showStatistics(key, ascendent) {
   var ordenados = [];
   var sortedMembers = members.sort(function(a, b) {
-    return order ? a[key] - b[key] : b[key] - a[key];
+    return ascendent ? a[key] - b[key] : b[key] - a[key];
   })
   var limit = Math.round(sortedMembers.length * 0.1);
   var i = 0;
