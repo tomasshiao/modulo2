@@ -4,9 +4,6 @@ var app = new Vue({
     filteredMembers: []}
 });
 
-function createTable(members){
-  return app;
-}
 function filterMembers() {
   var checkBoxes = document.querySelectorAll('input[name=party-filter]:checked')
   checkedBoxes = Array.from(checkBoxes)
@@ -19,7 +16,6 @@ function filterMembers() {
       return members;
     }
   });
-  console.log(filtrados);
   if (filterState() !== "todos") {
     filtrados = filtrados.filter(senador => filterState() == senador.state )
   } else if (filterState() == "todos") {

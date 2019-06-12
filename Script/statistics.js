@@ -50,21 +50,7 @@ function crearListas(members) {
   app.statistics.total_avg = Number(parseFloat((app.statistics.democrats_avg_vwp + app.statistics.republicans_avg_vwp + app.statistics.independent_avg_vwp) / 3).toPrecision(5));
 }
 
-function showEngagement(order) {
-  var ordenados = [];
-  var sortedMembers = members.sort(function(a, b) {
-    return order ? a.missed_votes_pct - b.missed_votes_pct : b.missed_votes_pct - a.missed_votes_pct
-  })
-  var limit = Math.round(sortedMembers.length * 0.1);
-  var i = 0;
-  while (i < limit || sortedMembers[i].missed_votes_pct == sortedMembers[i - 1].missed_votes_pct) {
-    ordenados.push(sortedMembers[i]);
-    i++;
-  }
-  return ordenados;
-}
-
-function showLoyalty(key, order) {
+function showStatistics(key, order) {
   var ordenados = [];
   var sortedMembers = members.sort(function(a, b) {
     return order ? a[key] - b[key] : b[key] - a[key];
@@ -77,10 +63,11 @@ function showLoyalty(key, order) {
   }
   return ordenados;
 }
+
 function createTable(members){
   crearListas(members);
-  app.statistics.most_engaged = showEngagement(true);
-  app.statistics.least_engaged = showEngagement(false);
-  app.statistics.most_loyal = showLoyalty("effective_votes_with_party_pct", false);
-  app.statistics.least_loyal = showLoyalty("effective_votes_with_party_pct", true);
+  app.statistics.most_engaged = showStatistics("missed_votes_pct", true);
+  app.statistics.least_engaged = showStatistics("missed_votes_pct", false);
+  app.statistics.most_loyal = showStatistics("effective_votes_with_party_pct", false);
+  app.statistics.least_loyal = showStatistics("effective_votes_with_party_pct", true);
 }
